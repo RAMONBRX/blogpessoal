@@ -7,6 +7,7 @@ import { TemaModule } from './tema/tema.module';
 import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { Usuario } from './usuario/entities/usuario.entity';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -19,14 +20,14 @@ import { Usuario } from './usuario/entities/usuario.entity';
       database: 'db_blogpessoal',
       entities: [Postagem, Tema, Usuario],
       synchronize: true,
-      logging: true,
+      // logging: true,
     }),
     PostagemModule,
     TemaModule,
     AuthModule,
     UsuarioModule
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {}

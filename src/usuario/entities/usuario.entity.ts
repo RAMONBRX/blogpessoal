@@ -2,6 +2,7 @@ import { IsEmail, IsNotEmpty, MinLength } from "class-validator"
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { Postagem } from "../../postagem/entities/postagem.entity"
 import { Transform, TransformFnParams } from "class-transformer"
+import { ApiProperty } from "@nestjs/swagger"
 
 @Entity({name: "tb_usuarios"})
 export class Usuario {
@@ -9,26 +10,31 @@ export class Usuario {
     @PrimaryGeneratedColumn() 
     id: number
 
-    @Transform(({value } : TransformFnParams) => value?.trim) // remover espaços em branco do inicio e fim
+    @Transform(({value } : TransformFnParams) => value?.trim()) // remover espaços em branco do inicio e fim
     @IsNotEmpty()
-    @Column({length: 255, nullable: false}) 
+    @Column({length: 255, nullable: false})
+    @ApiProperty()  
     nome: string
 
-    @Transform(({value } : TransformFnParams) => value?.trim) // remover espaços em branco do inicio e fim
-    // @IsEmail()
+    @Transform(({value } : TransformFnParams) => value?.trim()) // remover espaços em branco do inicio e fim
+    @IsEmail()
     @IsNotEmpty()
     @Column({length: 255, nullable: false })
+    @ApiProperty()  
     usuario: string
 
-    @Transform(({value } : TransformFnParams) => value?.trim) // remover espaços em branco do inicio e fim
-    // @MinLength(8)
+    @Transform(({value } : TransformFnParams) => value?.trim()) // remover espaços em branco do inicio e fim
+    @MinLength(8)
     @IsNotEmpty()
-    @Column({length: 255, nullable: false }) 
+    @Column({length: 255, nullable: false })
+    @ApiProperty()   
     senha: string
 
-    @Column({length: 5000 }) 
+    @Column({length: 5000 })
+    @ApiProperty()   
     foto: string
 
+    @ApiProperty()  
     @OneToMany(() => Postagem, (postagem) => postagem.usuario)
     postagem: Postagem[];
 
