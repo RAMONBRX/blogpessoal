@@ -7,7 +7,8 @@ import { ApiProperty } from "@nestjs/swagger"
 @Entity({name: "tb_usuarios"})
 export class Usuario {
 
-    @PrimaryGeneratedColumn() 
+    @PrimaryGeneratedColumn()
+    @ApiProperty() 
     id: number
 
     @Transform(({value } : TransformFnParams) => value?.trim()) // remover espaços em branco do inicio e fim
