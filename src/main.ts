@@ -11,7 +11,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
   .setTitle('Blog Pessoal')
   .setDescription('Projeto Blog Pessoal')
-  .setContact("Ramon Alberto da Silva","https://www.linkedin.com/in/ramon-alberto/","ramon.all98@hotmail.com")
+  .setContact("Ramon Alberto da Silva","https://ramonbrx.github.io/Portfolio/","ramon.all98@hotmail.com")
   .setVersion('1.0')
   .addBearerAuth()
   .build();
